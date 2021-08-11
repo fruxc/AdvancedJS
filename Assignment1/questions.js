@@ -5,8 +5,6 @@ let getMax = (object) => {
     })
 }
 
-
-
 getResponseData = (url) => {
     return new Promise((resolve, reject) => {
         $.getJSON({
