@@ -1,3 +1,4 @@
+// Get max function
 let getMax = (object) => {
     return Object.keys(object).reduce((a, b) => {
         if (object[a] === object[b]) return "All names occur only once"
@@ -5,6 +6,7 @@ let getMax = (object) => {
     })
 }
 
+// Promise to get data from specified URL 
 getResponseData = (url) => {
     return new Promise((resolve, reject) => {
         $.getJSON({
@@ -21,8 +23,9 @@ getResponseData = (url) => {
     })
 }
 
+// Question 1
 QuestionOne = async () => {
-    await getResponseData("battles.json", "").then((battles) => {
+    await getResponseData("battles.json").then((battles) => {
         let result = {
             'most_active': {
                 'attacker_king': '',
@@ -85,6 +88,7 @@ QuestionOne = async () => {
     })
 }
 
+// Question 2
 QuestionTwo = async () => {
     let result = []
     let query = $("#query").val()
@@ -132,6 +136,7 @@ QuestionTwo = async () => {
     }
 }
 
+// Question 3
 QuestionThree = async () => {
     const url = "http://api.nobelprize.org/v1/prize.json"
     await getResponseData(url).then(async (data) => {
