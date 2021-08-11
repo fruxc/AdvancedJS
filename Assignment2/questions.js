@@ -18,7 +18,7 @@ getResponseData = (url) => {
 
 // Question 1
 
-const MoviesByActor = (movies, actor) => {
+const MoviesByActor = async (movies, actor) => {
     let moviesByActor = []
     movies.forEach((movie) => {
         movie.cast.forEach((cast) => {
@@ -31,9 +31,9 @@ const MoviesByActor = (movies, actor) => {
 }
 
 
-const MoviesByGenre = (movies, genre) => {
+const MoviesByGenre = async (movies, genre) => {
     let moviesByGenre = []
-    movies.forEach((movie) => {
+    await movies.forEach((movie) => {
         movie.genres.forEach((data) => {
             if (data === genre) {
                 moviesByGenre.push(movie.title)
@@ -63,17 +63,17 @@ QuestionOne = async () => {
                 }
             })
         })
-        actors.forEach((actor) => {
+        actors.forEach(async (actor) => {
             let Actors = {
                 "Name": actor,
-                "Movies": MoviesByActor(movies, actor)
+                "Movies": await MoviesByActor(movies, actor)
             }
             result.Actors.push(Actors)
         })
-        genres.forEach((genre) => {
+        genres.forEach(async (genre) => {
             let Genres = {
                 "Type": genre,
-                "Movies": MoviesByGenre(movies, genre)
+                "Movies": await MoviesByGenre(movies, genre)
             }
             result.Genres.push(Genres)
         })
