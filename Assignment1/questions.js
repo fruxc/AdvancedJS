@@ -102,12 +102,15 @@ QuestionTwo = async () => {
                 let numberOfBranch = ''
                 await getResponseData(item.owner.url).then(async (ownerData) => {
                     owner.name = ownerData.name
-                    owner.followersCount = ownerData.followers
-                    owner.followingCount = ownerData.following
                 }).catch((error) => {
                     console.log(error)
                 })
-
+                await getResponseData(item.owner.followers_url).then(async (followers) => {
+                    owner.followersCount = followers.length
+                })
+                await getResponseData(item.owner.following_url.split("{")[0]).then(async (following) => {
+                    owner.followingCount = following.length
+                })
                 await getResponseData(item.branches_url.split("{")[0]).then(async (branchData) => {
                     numberOfBranch = branchData.length;
                 }).catch((error) => {
