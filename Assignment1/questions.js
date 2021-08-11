@@ -137,9 +137,14 @@ QuestionTwo = async () => {
 QuestionThree = async () => {
     const url = "http://api.nobelprize.org/v1/prize.json"
     await getResponseData(url).then(async (data) => {
-        console.log(data)
-        // let dataFilter = data.prizes
-        var div = $('<div> <br/> Answer for Question 3: <br/> <br/>' + JSON.stringify(result) + '</div>');
+        let dataFilter = data.prizes.filter(prize => prize.year >= "2000" && prize.year <= "2019" && prize.category === "chemistry")
+        let result = []
+        dataFilter.forEach(data => {
+            data.laureates.forEach(laureate => {
+                result = result.concat(" "+laureate.firstname + " " + laureate.surname)
+            })
+        })
+        var div = $('<div> <br/> Answer for Question 3: <br/> <br/>' + result + '</div>');
         $('.answer-container').append(div);
     }).catch((error) => {
         console.error(error)
