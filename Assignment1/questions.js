@@ -141,7 +141,7 @@ QuestionThree = async () => {
         let result = []
         dataFilter.forEach(data => {
             data.laureates.forEach(laureate => {
-                result = result.concat(" "+laureate.firstname + " " + laureate.surname)
+                result = result.concat(" " + laureate.firstname + " " + laureate.surname)
             })
         })
         var div = $('<div> <br/> Answer for Question 3: <br/> <br/>' + result + '</div>');
