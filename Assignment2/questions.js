@@ -100,7 +100,7 @@ class QueenAttack {
         // If queen and the opponent are in the same column
         if (this.queen1[0] === this.queen2[0]) return "Queens can attack because they are in the same column"
         // If queen can attack the opponent diagonally
-        if (this.queen1[1] - this.queen2[1] === this.queen1[0] - this.queen2[0]) return "Queens can attack each other diagonally"
+        if (Math.abs(this.queen1[1] - this.queen2[1]) === Math.abs(this.queen1[0] - this.queen2[0])) return "Queens can attack each other diagonally"
         return "Queens cannot attack each other"
     }
 }
